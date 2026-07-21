@@ -14,6 +14,7 @@ parts = [
     "part3b_ronde.html",
     "part4_teams.html",
     "part6_clubs.html",
+    "part7_stats.html",
     "part5_rest.html",
 ]
 

@@ -81,7 +81,7 @@ async function main(){
 
   console.log('15) tab-stand is standaard zichtbaar (geen inline display:none):', /id="tab-stand" class="tabcontent">/.test(html));
   console.log('16) tab-ronde is standaard verborgen:', /id="tab-ronde" class="tabcontent" style="display:none;"/.test(html));
-  const navOrder = ['stand','spelers','clubs','teams','regels','ronde','data'];
+  const navOrder = ['stand','spelers','clubs','teams','stats','regels','ronde','data'];
   const idxs = navOrder.map(t => html.indexOf(`data-tab="${t}"`));
   const juisteVolgorde = idxs.every((v,i)=> i===0 || v > idxs[i-1]);
   console.log('17) navigatievolgorde klopt (Tussenstand..Data):', juisteVolgorde);
@@ -230,6 +230,48 @@ async function main(){
     return m.spelersThuis.every(sp=>sp.geen_tegengoals===0);
   })()`);
   console.log('41) clean sheet wordt automatisch weer weggehaald zodra het team een tegengoal krijgt:', geenCleanSheetBijTegengoalCheck);
+
+  // Tabblad Statistieken: nav-knop, sectie en de aggregatiefuncties die de top-10 overzichten voeden.
+  console.log('42) nav-knop Statistieken staat tussen Teams en Spelregels:', /data-tab="teams">Teams<\/button>\s*<button data-tab="stats">/.test(html) && /data-tab="stats">Statistieken<\/button>\s*<button data-tab="regels">/.test(html));
+  console.log('43) tab-stats is standaard verborgen:', /id="tab-stats" class="tabcontent" style="display:none;"/.test(html));
+
+  run(sb, `
+    const rd20 = ensureRonde(20);
+    rd20.matches = [{
+      clubThuis:'TestClubX', clubUit:'TestClubY', uitslagThuis:0, uitslagUit:0,
+      spelersThuis:[{naam:'Piet Test', positie:'A', goal:2, pen_scoren:0, pen_missen:0, pen_stoppen:0, eigen_doelpunt:0, assist:1, geen_tegengoals:0, geel:1, geel2:0, rood:0}],
+      spelersUit:[{naam:'Klaas Test', positie:'K', goal:0, pen_scoren:0, pen_missen:0, pen_stoppen:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0}]
+    }];
+    syncUitslag(rd20.matches[0]);
+    const rd21 = ensureRonde(21);
+    rd21.matches = [{
+      clubThuis:'TestClubX', clubUit:'TestClubZ', uitslagThuis:0, uitslagUit:0,
+      spelersThuis:[{naam:'Piet Test', positie:'A', goal:1, pen_scoren:0, pen_missen:0, pen_stoppen:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:1}],
+      spelersUit:[{naam:'Jan Test', positie:'K', goal:0, pen_scoren:0, pen_missen:0, pen_stoppen:0, eigen_doelpunt:1, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0}]
+    }];
+    syncUitslag(rd21.matches[0]);
+  `);
+  const aggCheck = get(sb, `(function(){
+    const agg = aggregeerPerSpeler(alleSpelerBeurten());
+    const piet = agg.find(a=>a.naam==='Piet Test');
+    const jan = agg.find(a=>a.naam==='Jan Test');
+    return piet && piet.goals===3 && piet.assists===1 && piet.geel===1 && piet.rood===1 &&
+           jan && jan.eigenDoelpunt===1 && jan.blooperTotaal===1;
+  })()`);
+  console.log('44) aggregeerPerSpeler telt goals/assists/kaarten/blooper-stats correct op over meerdere rondes:', aggCheck);
+  const topscorerCheck = get(sb, `(function(){
+    const agg = aggregeerPerSpeler(alleSpelerBeurten());
+    return topN(agg,'goals',10)[0].naam === 'Piet Test';
+  })()`);
+  console.log('45) topN zet de speler met de meeste goals bovenaan:', topscorerCheck);
+  const svdrCheck = get(sb, `(function(){
+    const svdr = spelerVanDeRonde(alleSpelerBeurten());
+    const r20 = svdr.find(x=>x.ronde===20);
+    const r21 = svdr.find(x=>x.ronde===21);
+    return r20 && r20.naam==='Piet Test' && r21 && r21.naam==='Piet Test';
+  })()`);
+  console.log('46) speler van de ronde bevat de juiste (hoogst scorende) speler voor rondes 20 en 21:', svdrCheck);
+  console.log('47) statsContainer wordt gevuld na renderStats():', get(sb, `(function(){ renderStats(); return document.getElementById('statsContainer').innerHTML.includes('Topscorers'); })()`));
 
   console.log('ALLES OK');
 }
