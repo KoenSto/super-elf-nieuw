@@ -77,6 +77,15 @@ async function main(){
   console.log('12) STATE.players geladen vanuit seed (445 spelers):', get(sb,'STATE.players.length')===445);
   run(sb, "addTeam('Koen','Team Koen');");
   console.log('13) team aanmaken werkt (STATE.teams heeft 1 team):', Object.keys(get(sb,'STATE.teams')).length===1);
+  console.log('14) navDataBtn zichtbaar voor editor (koen):', get(sb,"document.getElementById('navDataBtn').style.display")==='');
+
+  console.log('15) tab-stand is standaard zichtbaar (geen inline display:none):', /id="tab-stand" class="tabcontent">/.test(html));
+  console.log('16) tab-ronde is standaard verborgen:', /id="tab-ronde" class="tabcontent" style="display:none;"/.test(html));
+  const navOrder = ['stand','spelers','clubs','teams','regels','ronde','data'];
+  const idxs = navOrder.map(t => html.indexOf(`data-tab="${t}"`));
+  const juisteVolgorde = idxs.every((v,i)=> i===0 || v > idxs[i-1]);
+  console.log('17) navigatievolgorde klopt (Tussenstand..Data):', juisteVolgorde);
+  console.log('18) Tussenstand-knop heeft class="active":', /data-tab="stand" class="active"/.test(html));
 
   console.log('ALLES OK');
 }
