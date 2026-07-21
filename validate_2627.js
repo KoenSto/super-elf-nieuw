@@ -98,6 +98,51 @@ async function main(){
   })()`);
   console.log('21) positie is opzoekbaar via playersOfClub op naam:', positieMatch);
 
+  console.log('22) alle 34 rondes hebben een wedstrijdschema (9 wedstrijden):', get(sb, "Object.keys(DATA.allweeks).length")===34 && get(sb, "Object.values(DATA.allweeks).every(w=>w.length===9)"));
+  console.log('23) ronde 1 seizoensopener klopt (SC_Cambuur-Excelsior):', get(sb, "DATA.allweeks['1'][0].club_thuis")==='SC_Cambuur' && get(sb,"DATA.allweeks['1'][0].club_uit")==='Excelsior');
+  console.log('24) elke ronde bevat alle 18 clubs precies 1x:', get(sb, `(function(){
+    for(const [r,ms] of Object.entries(DATA.allweeks)){
+      const clubs = new Set();
+      ms.forEach(m=>{ clubs.add(m.club_thuis); clubs.add(m.club_uit); });
+      if(clubs.size!==18) return false;
+    }
+    return true;
+  })()`));
+  console.log('25) spelregels.periodes correct (1-9/10-17/18-26/27-34):', get(sb, `(function(){
+    const p = DATA.spelregels.periodes;
+    return p.periode1.van===1 && p.periode1.tot===9 && p.periode2.van===10 && p.periode2.tot===17 &&
+           p.periode3.van===18 && p.periode3.tot===26 && p.periode4.van===27 && p.periode4.tot===34;
+  })()`));
+
+  // Live periodetotaal: geef het team uit test 13 een basisspeler met een bekende naam, vul ronde 2
+  // (binnen periode 1) met een uitslag+statistiek in en check dat periodeTotaal('periode1') meetelt.
+  run(sb, `
+    const team = STATE.teams[Object.keys(STATE.teams)[0]];
+    const speler = STATE.players[0];
+    team.basis.push({naam: speler.naam, club: speler.club, prijs: speler.prijs, positie: speler.positie});
+    const rd2 = ensureRonde(2);
+    rd2.matches[0].uitslagThuis = 2; rd2.matches[0].uitslagUit = 0;
+    rd2.matches[0].spelersThuis = [{naam: speler.naam, positie: speler.positie, rol:'basis', goal:1,pen_scoren:0,pen_missen:0,pen_stoppen:0,eigen_doelpunt:0,assist:0,geen_tegengoals:0,geel:0,geel2:0,rood:0}];
+  `);
+  const p1Waarde = get(sb, `(function(){ const team = STATE.teams[Object.keys(STATE.teams)[0]]; buildTeamList(); const t = TEAM_LIST.find(x=>x.key===Object.keys(STATE.teams)[0]); return periodeTotaal(t,'periode1'); })()`);
+  console.log('26) live periodetotaal (P1) telt score uit ronde 2 mee:', p1Waarde > 0);
+
+  // Migratietest: simuleer een bestaande cloud-STATE (dataVersion 4, zoals nu live) waarin
+  // ronde 1 al 9 echte wedstrijden heeft (door Koen/Frank zelf ingevuld) maar rondes 2-34 nog leeg
+  // zijn. Na de upgrade naar SEED_VERSION 5 (met het nieuwe wedstrijdschema) mag ronde 1 niet
+  // overschreven worden, maar moeten de lege rondes wel het echte schema krijgen.
+  let sb2 = newSandbox({embeddedStateJSON: makeEl('null'), loginOverlay: makeEl(), appRoot: makeEl(), loginError: makeEl(), firebaseStatus: makeEl(), fbHeaderStatus: makeEl(), loginUserBadge: makeEl()}, {}, {firebase: makeFakeFirebase({value:null,listeners:[]}, users)});
+  const oudeState = get(sb2, `(function(){
+    const s = { dataVersion: 4, huidigeRonde: 1, teams: {}, players: [], wisselLog: [], transferLog: [], rounds: {} };
+    for(let i=1;i<=34;i++) s.rounds[String(i)] = {matches:[]};
+    s.rounds['1'].matches.push({clubThuis:'SC_Cambuur', clubUit:'Excelsior', uitslagThuis:null, uitslagUit:null, spelersThuis:[], spelersUit:[]});
+    return s;
+  })()`);
+  run(sb2, `STATE = normaliseState(${JSON.stringify(oudeState)});`);
+  console.log('27) migratie behoudt bestaande ronde 1 (niet overschreven):', get(sb2, "STATE.rounds['1'].matches.length")===1 && get(sb2,"STATE.rounds['1'].matches[0].clubThuis")==='SC_Cambuur');
+  console.log('28) migratie vult lege ronde 2 met echt wedstrijdschema:', get(sb2, "STATE.rounds['2'].matches.length")===9);
+  console.log('29) migratie zet dataVersion bij naar huidige SEED_VERSION:', get(sb2,'STATE.dataVersion')===get(sb2,'SEED_VERSION'));
+
   console.log('ALLES OK');
 }
 main().catch(e=>{ console.error('TESTFOUT', e); process.exit(1); });
