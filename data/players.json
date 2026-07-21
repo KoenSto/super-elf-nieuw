@@ -1,0 +1,3139 @@
+{
+ "clubs": [
+  "ADO",
+  "Ajax",
+  "AZ",
+  "Excelsior",
+  "FC_Groningen",
+  "FC_Twente",
+  "FC_Utrecht",
+  "Feyenoord",
+  "Fortuna_Sittard",
+  "Go_Ahead",
+  "NEC",
+  "PEC",
+  "PSV",
+  "SC_Cambuur",
+  "SC_Heerenveen",
+  "Sparta",
+  "Telstar",
+  "Willem_II"
+ ],
+ "players": [
+  {
+   "club": "ADO",
+   "naam": "Kilian Nikièma",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Niclas Thiede",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Caleb Kramer",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Matteo Waem",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Pascal Mulder",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Milan Hokke",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Lasse Wilhelm",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Sekou Sylla",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Sanyika Bergtop",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Juho Kilo",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Jan Zamburek",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Mylian Jiménez",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Evan Rottier",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Finn de Bruin",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Cameron Peupion",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Illaijh de Ruijter",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Nigel Thomas",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Dani van Loenen",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Jalen Hawkins",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Daryl van Mieghem",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Luka Reischl",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Donát Bárány",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "ADO",
+   "naam": "Jesse Bal",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Maarten Paes",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Paul Reverson",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Marc-Andre ter Stegen",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Youri Baas",
+   "prijs": 2500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Josip Sutalo",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Ko Itakura",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Ahmetcan Kaplan",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Dies Janse",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Aaron Bouwman",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Daley Blind",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Caio Henrique",
+   "prijs": 2500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Owen Wijndal",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Lucas Rosa",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Anton Gaaei",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Jorthy Mokio",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Youri Regeer",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Kian Fitz-Jim",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Davy Klaassen",
+   "prijs": 2500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Oscar Gloukh",
+   "prijs": 2500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Rayane Bounida",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Mika Godts",
+   "prijs": 3250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Oliver Edvardsen",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Amourricho van Axel Dongen",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Maher Carrizo",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Steven Berghuis",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Marcos Leonardo",
+   "prijs": 3000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Kasper Dolberg",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Ajax",
+   "naam": "Don-Angelo Konadu",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Rome-Jayden Owusu-Oduro",
+   "prijs": 1750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Jari De Busser",
+   "prijs": 1750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Jeroen Zoet",
+   "prijs": 1750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Hobie Verhulst",
+   "prijs": 1750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Wouter Goes",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Alexandre Penetra",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Rion Ichihara",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Billy van Duijl",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Lewis Schouten",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Maxim Dekker",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Mees de Wit",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Mateo Chávez",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Elijah Dijkstra",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Denso Kasius",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Seiya Maikuma",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Peer Koopmeiners",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Kasper Boogaard",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Jordy Clasie",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Kees Smit",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Dave Kwakman",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Matej Sin",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Isak Jensen",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Ro-Zangelo Daal",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Wassim Bouziane",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Weslley Patati",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Ayoub Oufkir",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Mayckel Lahdo",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Ibrahim Sadiq",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Troy Parrott",
+   "prijs": 2500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Mexx Meerdink",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "AZ",
+   "naam": "Jizz Hornkamp",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Stijn van Gassel",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Calvin Raatsie",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Casper Widell",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Rick Meissen",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Jan Plug",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Stan Henderikx",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Kasey Bos",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Simon Janssen",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Nolan Martens",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Marlon van de Wetering",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Daniel van Vianen",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Lennard Hartjes",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Mathijs Tielemans",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Irakli Yegoian",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Noah Naujoks",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Yacqub Finey",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Gyan de Regt",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Ilano Silva Timas",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Derensili Sanches Fernandes",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "Nesto Groen",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Excelsior",
+   "naam": "David Garden",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Etienne Vaessen",
+   "prijs": 1250000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Lovo Stubljar",
+   "prijs": 1250000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Rijk Janse",
+   "prijs": 1250000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Thijmen Blokzijl",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Sven Bouland",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Elvis van der Laan",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Wouter Prins",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Marco Rente",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Tyrique Mercera",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Stije Resink",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Tygo Land",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Tika de Jonge",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Pelle Clement",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Travis Hernes",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Jorg Schreuders",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Nils Eggens",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Noam Emeran",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Ryan Metu",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "David van der Werff",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Thom van Bergen",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Brynjólfur Willumsson",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Groningen",
+   "naam": "Oskar Zawada",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Lars Unnerstall",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Issam El Maach",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Remko Pasveer",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Yannick Gerritsen",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Ruud Nijstad",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Stav Lemkin",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Mees Hilgers",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Max Bruns",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Robin Pröpper",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Juliën Mesbahi",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Aske Adelgaard",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Krzysztof Kurowski",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Bart van Rooij",
+   "prijs": 2500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Guilherme Peixoto",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Thomas van den Belt",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Mathias Kjølø",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Daouda Weidmann",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Gijs Besselink",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Kristian Hlynsson",
+   "prijs": 2750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Arno Verschueren",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Harrie Kuster",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Ramiz Zerrouki",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Sondre Ørjasæter",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Marko Pjaca",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Sayfallah Ltaief",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Naci Ünüvar",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Daan Rots",
+   "prijs": 2500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Younes Taha",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Taylor Booth",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Sam Lammers",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Wout Weghorst",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Twente",
+   "naam": "Lucas Vennegoor of H.",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Vasilios Barkas",
+   "prijs": 1750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Michael Brouwer",
+   "prijs": 1750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Matisse Didden",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Mike Eerdhuijzen",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Guus Offerhaus",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Neville Ogidi Nwankwo",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Jamie Schuldes",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Arthur Zagré",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Emeka Adiele",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Siebe Horemans",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Niklas Vesterlund",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Alonzo Engwanda",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Oualid Agougil",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Davy van den Berg",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Zidane Iqbal",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Kevin Paredes",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Dani de Wit",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Victor Jensen",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Rafik El Arguioui",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Joris van Overeem",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Yoann Cathline",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Ángel Alarcón",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Adrian Blake",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Emirhan Demircan",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Miguel Rodríguez",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Miliano Jonathans",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Emmanuel Chigozie Owen",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Artem Stepanov",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "David Min",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "FC_Utrecht",
+   "naam": "Noah Ohio",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Tjark Ernst",
+   "prijs": 2250000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Liam Bossin",
+   "prijs": 2250000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Givairo Read",
+   "prijs": 2500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Anel Ahmedhodzic",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Tsuyoshi Watanabe",
+   "prijs": 2750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Jordan Bos",
+   "prijs": 3250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Gijs Smal",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Mats Deijl",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Jordan Lotomba",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Thijs Kraaijeveld",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Mika Marmol",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Thomas Beelen",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Jeremaih St. Juste",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Neraysho Kasanwirjo",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Bart Nieuwkoop",
+   "prijs": 2250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Jakub Moder",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Luciano Valente",
+   "prijs": 2500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Sem Steijn",
+   "prijs": 3000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Givaj Zechiel",
+   "prijs": 2750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Ilai Grootfaam",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Tobias vd Elshout",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Oussama Targhalline",
+   "prijs": 2500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Hwang In Beom",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Charles Vanhoutte",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Luka Ivanusec",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Leo Sauer",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Shaqueel van Persie",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Casper Tengstedt",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Nacho Ferri",
+   "prijs": 2500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Ayase Ueda",
+   "prijs": 3750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Calvin Stengs",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Aymen Sliti",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Gaoussou Diarra",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Feyenoord",
+   "naam": "Goncalo Borges",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Mattijs Branderhorst",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Luuk Koopmans",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Ramazan Bayram",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Justin Hubner",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Syb van Ottele",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Iván Márquez",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Jasper Dahlhaus",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Nick de Groot",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Siebe Wylin",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Ivo Pinto",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Philip Brittijn",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Edouard Michut",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Yassin Oukili",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Sven Simons",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Moussa Gbemou",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Mohamed Ihattaren",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Shiloh 't Zand",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Kristoffer Peterson",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Lequincio Zeefuik",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Fortuna_Sittard",
+   "naam": "Ole Romeny",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Kjetil Haug",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Nick Marsman",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Nando Verdoni",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Joris Kramer",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Julius Dirksen",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Gerrit Nauber",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Giovanni van Zwam",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Pim Saathof",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Dean James",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Tomas Galvez",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Alfons Sampsted",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Eus Waayers",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Melle Meulensteen",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Calvin Twigt",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Evert Linthorst",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Yassir Salah Rahmouni",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Robbin Weijenberg",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Søren Tengstedt",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Mathis Suray",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Ofosu Boakye",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Oskar Sivertsen",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Stefán Ingi Sigurdarson",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Victor Edvardsen",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Erik Flataker",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Richonell Margaret",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Go_Ahead",
+   "naam": "Thibo Baeten",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Gonzalo Crettaz",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Jasper Cillessen",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Frrek Entius",
+   "prijs": 2000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Philippe Sandler",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Deveron Fonville",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Tobias Storm",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Brayann Pereira",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Perr Schuurs",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Thomas Ouwejan",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Bram Nuytinck",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Merijn van de Wiel",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Yousri Sbai",
+   "prijs": 2000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Darko Nejasmic",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Dirk Proper",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Kodai Sano",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Jamiro Monteiro",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Adam Tahaui",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Sam de Laat",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Sami Ouaissa",
+   "prijs": 2250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Noé Lebreton",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Willum Willumsson",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Vito van Crooij",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Isak Hansen-Aarøen",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Tjaronn Chery",
+   "prijs": 2500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Kevin Kers",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Koki Ogawa",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Kaj Sierhuis",
+   "prijs": 2250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Bryan Linssen",
+   "prijs": 2500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "NEC",
+   "naam": "Emre Mor",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Jasper Schendelaar",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Tom de Graaff",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Duke Verduin",
+   "prijs": 1000000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Simon Graves",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Tijs Velthuis",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Damian van der Haar",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Nick Viergever",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Sherel Floranus",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Olivier Aertssen",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Tobias Sommer",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Jadiel Pereira da Gama",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Ryan Thomas",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Nick Fichtinger",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Givaro Rahajaän",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Thijs Oosting",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Odysseus Velanas",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Gabriël Reiziger",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Elias Sørensen",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Younes Namli",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Dylan Mbayo",
+   "prijs": 1000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PEC",
+   "naam": "Koen Kostons",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Matej Kovar",
+   "prijs": 2750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Nick Olij",
+   "prijs": 2750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Joel Drommel",
+   "prijs": 2750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Sergino Dest",
+   "prijs": 3000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Ryan Flamingo",
+   "prijs": 3000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Yarek Gasiorowski",
+   "prijs": 3000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Mauro Junior",
+   "prijs": 3000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Armando Obispo",
+   "prijs": 2750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Jerdy Schouten",
+   "prijs": 2750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Kiliann Sildillia",
+   "prijs": 2750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Fabian Merién",
+   "prijs": 2750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Adamo Nagalo",
+   "prijs": 2750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Sven Mijnans",
+   "prijs": 3250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Guus Til",
+   "prijs": 3750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Joey Veerman",
+   "prijs": 3500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Paul Wanner",
+   "prijs": 2750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Joel vd Berg",
+   "prijs": 2750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Noah Fernandez",
+   "prijs": 2750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Isaac Babadi",
+   "prijs": 2750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Ricardo Pepi",
+   "prijs": 3500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Ivan Perisic",
+   "prijs": 3250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Dennis Man",
+   "prijs": 3000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Couhaib Driouech",
+   "prijs": 3000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Esmir Bajraktarevic",
+   "prijs": 3000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Alessane Plea",
+   "prijs": 3000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "PSV",
+   "naam": "Ruben van Bommel",
+   "prijs": 3000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Thijs Jansen",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Jasper Meijster",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Matthijs Kalisvaart",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Ismaël Baouf",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Jamal Amofa",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Jorn Berkhout",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Lucas Jetten",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Morgan Costarelli",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Rik Mulders",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Ryan van de Pavert",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Nicky Souren",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Ethan Apkakou",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Daan Visser",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Ilyes Hamache",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Fabian Kvam",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Iwan Henstra",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Wiebe Kooistra",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Skye Vink",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Cambuur",
+   "naam": "Nicolas Binder",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Bernt Klaverboer",
+   "prijs": 1500000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Nordin Bakker",
+   "prijs": 1500000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Maas Willemsen",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Sam Kersten",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Nikolai Hopland",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Hristiyan Petrov",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Vasilios Zagaritis",
+   "prijs": 1750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Darling Bladi",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Oliver Braude",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Mats Egbring",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Marcus Linday",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Isaiah Ahmed",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Ringo Meerveld",
+   "prijs": 2000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Luuk Brouwers",
+   "prijs": 1750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Levi Smans",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Nolhan Courtens",
+   "prijs": 1500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Maxence Rivera",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Luca Oyen",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Jacob Trenskow",
+   "prijs": 2000000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Eser Gürbüz",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Jermaine Rijssel",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "SC_Heerenveen",
+   "naam": "Dylan Vente",
+   "prijs": 1750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Filip Bednarek",
+   "prijs": 1250000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Pascal Kuiper",
+   "prijs": 1250000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Marvin Young",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Teo Quintero",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Nick Verschuren",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Bruno Martins Indi",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Max de Ligt",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Bas Kuipers",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Mike Kleijn",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Giannino Vianello",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Lushendry Martes",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Boyd Reith",
+   "prijs": 1250000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Alwande Roaldsøy",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Julian Baas",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Ayoni Santos",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Jens Toornstra",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Younes Jaber el Meftahi",
+   "prijs": 1250000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Shunsuke Mito",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Joel Ideho",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Mitchell van Bergen",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Casper Terho",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Milan Zonneveld",
+   "prijs": 1500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Sparta",
+   "naam": "Nökkvi Thórisson",
+   "prijs": 1250000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Ronald Koeman",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Daan Reiziger",
+   "prijs": 750000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Abdelnour Soualhia",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Abdelraffie Benzzine",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Yamano Olfers",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Marvin Peersman",
+   "prijs": 1000000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Gerald Alders",
+   "prijs": 750000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Jeff Hardeveld",
+   "prijs": 1500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Nils Rossen",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Noach Shenkman",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Tyrone Owusu",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Rojendro Oudsten",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Patrick Brouwer",
+   "prijs": 1000000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Nigel Ogidi Nwankwo",
+   "prijs": 750000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Rui Mendes",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Soufiane Hetli",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Jelani Seedorf",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Telstar",
+   "naam": "Kay Tejan",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Thomas Didillon-Hödl",
+   "prijs": 500000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Wouter van der Steen",
+   "prijs": 500000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Karst de Leeuw",
+   "prijs": 500000,
+   "positie": "K",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Finn Stam",
+   "prijs": 500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Justin Hoogma",
+   "prijs": 500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Jens Mathijsen",
+   "prijs": 500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Nathan Tjoe-A-On",
+   "prijs": 500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Per van Loon",
+   "prijs": 500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Amine Et-Taïbi",
+   "prijs": 500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Alessandro Ciranni",
+   "prijs": 500000,
+   "positie": "V",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Amine Lachkar",
+   "prijs": 500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Anass Zarrouk",
+   "prijs": 500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Jari Schuurman",
+   "prijs": 500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Uriël van Aalst",
+   "prijs": 500000,
+   "positie": "M",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Armin Culum",
+   "prijs": 500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Jaden Slory",
+   "prijs": 500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Lasse Abildgaard",
+   "prijs": 500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Devin Haen",
+   "prijs": 750000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Siegert Baartmans",
+   "prijs": 500000,
+   "positie": "A",
+   "totaal": 0
+  },
+  {
+   "club": "Willem_II",
+   "naam": "Thomas Verheydt",
+   "prijs": 500000,
+   "positie": "A",
+   "totaal": 0
+  }
+ ]
+}

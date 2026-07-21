@@ -1,0 +1,109 @@
+{
+ "inleg": 50,
+ "aantal_spelers": 11,
+ "max_per_club": 1,
+ "budget": 20000000,
+ "max_wissels": 5,
+ "formaties": [
+  "3-4-3",
+  "4-3-3",
+  "4-4-2",
+  "3-5-2",
+  "5-3-2"
+ ],
+ "puntentabel": {
+  "winst": {
+   "K": 3,
+   "V": 3,
+   "M": 3,
+   "A": 3
+  },
+  "gelijk": {
+   "K": 1,
+   "V": 1,
+   "M": 1,
+   "A": 1
+  },
+  "goal": {
+   "K": 14,
+   "V": 9,
+   "M": 7,
+   "A": 5
+  },
+  "pen_scoren": {
+   "K": 4,
+   "V": 4,
+   "M": 4,
+   "A": 4
+  },
+  "pen_missen": {
+   "K": -4,
+   "V": -4,
+   "M": -4,
+   "A": -4
+  },
+  "pen_stoppen": {
+   "K": 4,
+   "V": 10,
+   "M": 10,
+   "A": 10
+  },
+  "eigen_doelpunt": {
+   "K": -4,
+   "V": -4,
+   "M": -4,
+   "A": -4
+  },
+  "assist": {
+   "K": 4,
+   "V": 3,
+   "M": 2,
+   "A": 2
+  },
+  "geen_tegengoals": {
+   "K": 4,
+   "V": 2,
+   "M": 0,
+   "A": 0
+  },
+  "geel": {
+   "K": -2,
+   "V": -2,
+   "M": -2,
+   "A": -2
+  },
+  "geel2": {
+   "K": -2,
+   "V": -2,
+   "M": -2,
+   "A": -2
+  },
+  "rood": {
+   "K": -6,
+   "V": -6,
+   "M": -6,
+   "A": -6
+  },
+  "verlies": {
+   "K": 0,
+   "V": 0,
+   "M": 0,
+   "A": 0
+  }
+ },
+ "prijzengeld_indicatie": {
+  "1e": 15,
+  "2e": 12,
+  "3e": 9,
+  "4e": 6,
+  "5e": 3,
+  "periode1": 3,
+  "periode2": 3,
+  "periode3": 3,
+  "periode4": 3,
+  "hoogste_weekscore": 3,
+  "beker_winnaar": 6,
+  "beker_2e": 3
+ },
+ "extra_wissel_na_ronde": 17
+}
