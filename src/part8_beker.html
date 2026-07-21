@@ -1,0 +1,175 @@
+<script>
+/* ============ TAB: Beker (knockout-toernooi tussen de fantasy-teams) ============ */
+// Regels (zoals afgesproken):
+// - Bekerwedstrijden vinden elke 5 speelrondes plaats, de eerste in speelronde 5.
+// - Het aantal ingeschreven teams (op het moment van loten) bepaalt de bracket-grootte
+//   (de kleinste macht van 2 >= aantal teams) en dus het aantal "byes" (teams die de eerste
+//   bekerronde automatisch doorkomen omdat er niet genoeg tegenstanders zijn).
+// - Bij méér dan 64 teams is de bracket 128 plekken groot (7 bekerrondes) en wordt de laatste
+//   stap verkort van 5 naar 4 speelrondes, zodat de finale in speelronde 34 valt in plaats van 35
+//   (die ronde bestaat niet). Bij 64 teams of minder is de bracket maximaal 64 plekken (6 bekerrondes)
+//   en valt de finale uiterlijk in speelronde 30.
+// - Een bekerwedstrijd wordt beslist door de rondescore van beide teams in die specifieke
+//   speelronde (dezelfde berekening als de kolom "ronde" bij Tussenstand). Dit seizoen heeft geen
+//   apart historisch archief (dat had alleen het vorige seizoen), dus dit is de enige/actuele
+//   bron — wijzig je een team achteraf, dan kan dat in theorie ook een eerdere bekeruitslag
+//   beïnvloeden, precies zoals dat nu al voor de rondescore bij Tussenstand geldt.
+// - Bij een gelijke rondescore wint het team met het laagste totale spelersbudget (basis + wissels).
+// - De loting (welk team in welk bracket-vakje start) is de enige stap die eenmalig vastligt;
+//   alle uitslagen en de verdere doorstroom worden daarna live afgeleid, net als de rest van de app.
+
+function shuffleArray(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function bepaalBekerRondeNummers(aantalTeams){
+  let bracketSize = 2;
+  while(bracketSize < aantalTeams) bracketSize *= 2;
+  bracketSize = Math.min(bracketSize, 128);
+  const aantalRondes = Math.round(Math.log2(bracketSize));
+  const rondeNummers = [];
+  for(let i=1;i<=aantalRondes;i++) rondeNummers.push(5*i);
+  // Bij meer dan 64 teams (dus een bracket van 128) valt de laatste stap op speelronde 35, die niet
+  // bestaat — verkort die laatste stap dan naar speelronde 34.
+  if(aantalTeams > 64 && rondeNummers.length){
+    rondeNummers[rondeNummers.length-1] = 34;
+  }
+  return {bracketSize, rondeNummers};
+}
+
+function trekBekerLoting(){
+  buildTeamList();
+  const teamKeys = TEAM_LIST.map(t=>t.key);
+  if(teamKeys.length < 2){
+    alert('Er moeten minstens 2 teams zijn (bij Teams) voordat je een bekerloting kunt trekken.');
+    return;
+  }
+  if(STATE.beker && STATE.beker.drawn){
+    if(!confirm('Er is al een loting getrokken. Opnieuw loten wist het huidige bekerschema en alle bekeruitslagen die daaruit volgen. Doorgaan?')) return;
+  }
+  const {bracketSize, rondeNummers} = bepaalBekerRondeNummers(teamKeys.length);
+  const byes = bracketSize - teamKeys.length;
+  const slots = shuffleArray([...teamKeys, ...Array(byes).fill(null)]);
+  STATE.beker = {drawn:true, slots, rondeNummers, getrokkenOp: new Date().toISOString(), aantalTeamsBijLoting: teamKeys.length};
+  saveState();
+  renderBeker();
+}
+
+function haalBekerTeamOp(key){
+  if(!key) return null;
+  return TEAM_LIST.find(t=>t.key===key) || null;
+}
+
+function bekerTeamLabel(key){
+  const t = haalBekerTeamOp(key);
+  if(!t) return key ? '(verwijderd team)' : '— bye —';
+  return `${esc(t.teamnaam)} <span class="muted small">(${esc(t.speler)})</span>`;
+}
+
+// Bepaalt de winnaar van één bekerwedstrijd in een specifieke speelronde. Retourneert altijd een
+// object met minstens {winnaarKey, status}; winnaarKey is null zolang er nog niets te beslissen is.
+function bekerWedstrijdUitslag(teamAKey, teamBKey, ronde){
+  if(!teamAKey && !teamBKey) return {winnaarKey:null, status:'leeg'};
+  if(teamAKey && !teamBKey) return {winnaarKey:teamAKey, status:'bye'};
+  if(!teamAKey && teamBKey) return {winnaarKey:teamBKey, status:'bye'};
+  const teamA = haalBekerTeamOp(teamAKey), teamB = haalBekerTeamOp(teamBKey);
+  if(!teamA || !teamB) return {winnaarKey:null, status:'onbekend'};
+  const rd = STATE.rounds[String(ronde)];
+  const gespeeld = rd && rd.matches.some(m=>m.spelersThuis.length>0 || m.spelersUit.length>0);
+  if(!gespeeld) return {winnaarKey:null, status:'nog_spelen'};
+  const scoreA = liveTotaalRonde(teamA, ronde).total;
+  const scoreB = liveTotaalRonde(teamB, ronde).total;
+  if(scoreA > scoreB) return {winnaarKey:teamAKey, status:'gespeeld', scoreA, scoreB};
+  if(scoreB > scoreA) return {winnaarKey:teamBKey, status:'gespeeld', scoreA, scoreB};
+  const budgetA = computeBudget(teamA).totaalGebruikt;
+  const budgetB = computeBudget(teamB).totaalGebruikt;
+  if(budgetA < budgetB) return {winnaarKey:teamAKey, status:'gelijk_tiebreak', scoreA, scoreB, budgetA, budgetB};
+  if(budgetB < budgetA) return {winnaarKey:teamBKey, status:'gelijk_tiebreak', scoreA, scoreB, budgetA, budgetB};
+  return {winnaarKey:null, status:'onbeslist', scoreA, scoreB, budgetA, budgetB};
+}
+
+// Rekent het volledige schema live door: de loting (STATE.beker.slots) ligt vast, maar wie er
+// per bekerronde doorgaat wordt elke keer opnieuw bepaald aan de hand van de actuele Speelronde-data.
+function berekenBekerSchema(){
+  buildTeamList();
+  const {slots, rondeNummers} = STATE.beker;
+  let huidige = slots.slice();
+  const rondes = [];
+  rondeNummers.forEach(ronde=>{
+    const teamsInDezeRonde = huidige.length;
+    const wedstrijden = [];
+    const volgende = [];
+    for(let j=0;j<huidige.length;j+=2){
+      const a = huidige[j], b = huidige[j+1];
+      const res = bekerWedstrijdUitslag(a, b, ronde);
+      wedstrijden.push({teamA:a, teamB:b, ronde, ...res});
+      volgende.push(res.winnaarKey);
+    }
+    rondes.push({ronde, teamsInDezeRonde, wedstrijden});
+    huidige = volgende;
+  });
+  const kampioenKey = (huidige.length===1) ? huidige[0] : null;
+  return {rondes, kampioenKey};
+}
+
+function bekerRondeNaam(teamsInDezeRonde){
+  if(teamsInDezeRonde<=2) return 'Finale';
+  if(teamsInDezeRonde===4) return 'Halve finale';
+  if(teamsInDezeRonde===8) return 'Kwartfinale';
+  return `Ronde van ${teamsInDezeRonde}`;
+}
+
+function bekerStatusTekst(w){
+  if(w.status==='bye') return 'bye — gaat automatisch door';
+  if(w.status==='leeg') return '';
+  if(w.status==='onbekend') return 'team niet meer gevonden';
+  if(w.status==='nog_spelen') return `nog te spelen (speelronde ${w.ronde} is nog niet ingevuld)`;
+  if(w.status==='gespeeld') return `${w.scoreA} - ${w.scoreB}`;
+  if(w.status==='gelijk_tiebreak') return `${w.scoreA} - ${w.scoreB} (gelijk — ${bekerTeamLabelPlain(w.winnaarKey)} gaat door op laagste spelersbudget)`;
+  if(w.status==='onbeslist') return `${w.scoreA} - ${w.scoreB} (gelijk in score én budget — nog onbeslist)`;
+  return '';
+}
+function bekerTeamLabelPlain(key){
+  const t = haalBekerTeamOp(key);
+  return t ? t.teamnaam : '?';
+}
+
+function bekerWedstrijdHTML(w){
+  const aWin = w.winnaarKey && w.winnaarKey===w.teamA;
+  const bWin = w.winnaarKey && w.winnaarKey===w.teamB;
+  return `<div class="beker-match">
+    <span class="beker-team ${aWin?'winnaar':''}">${bekerTeamLabel(w.teamA)}</span>
+    <span class="beker-score">${w.status==='gespeeld'||w.status==='gelijk_tiebreak'||w.status==='onbeslist' ? esc(w.scoreA+' - '+w.scoreB) : (w.status==='bye'?'bye':'vs')}</span>
+    <span class="beker-team ${bWin?'winnaar':''}">${bekerTeamLabel(w.teamB)}</span>
+    <span class="beker-status muted small">${esc(bekerStatusTekst(w))}</span>
+  </div>`;
+}
+
+function renderBeker(){
+  const el = document.getElementById('bekerContainer');
+  if(!STATE.beker || !STATE.beker.drawn){
+    el.innerHTML = `<div class="panel muted">Nog geen loting getrokken. Klik hierboven op "Loting trekken" zodra alle teams voor dit seizoen zijn aangemaakt bij Teams.</div>`;
+    return;
+  }
+  const {rondes, kampioenKey} = berekenBekerSchema();
+  const bracketSize = STATE.beker.slots.length;
+  const byes = bracketSize - STATE.beker.aantalTeamsBijLoting;
+  const infoHTML = `<div class="note small">Loting getrokken voor <b>${STATE.beker.aantalTeamsBijLoting}</b> team(s), afgerond op een bracket van <b>${bracketSize}</b> plekken (${byes} bye${byes===1?'':'s'}). Bekerrondes: speelronde ${STATE.beker.rondeNummers.join(', ')}.</div>`;
+  const kampioenHTML = kampioenKey ? `<div class="panel" style="text-align:center;background:var(--posK-bg);"><h2 style="margin:6px 0;">\u{1F3C6} Bekerwinnaar: ${bekerTeamLabel(kampioenKey)}</h2></div>` : '';
+  const rondesHTML = rondes.map(r=>{
+    const titel = `${bekerRondeNaam(r.teamsInDezeRonde)} (speelronde ${r.ronde})`;
+    const wedstrijdenHTML = r.wedstrijden.map(bekerWedstrijdHTML).join('');
+    return `<div class="panel"><h3 style="margin-top:0;">${esc(titel)}</h3><div class="beker-matches">${wedstrijdenHTML}</div></div>`;
+  }).join('');
+  el.innerHTML = infoHTML + kampioenHTML + rondesHTML;
+}
+
+function initBekerTab(){
+  document.getElementById('btnBekerLoting').addEventListener('click', trekBekerLoting);
+}
+</script>

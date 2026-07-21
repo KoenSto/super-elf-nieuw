@@ -201,6 +201,7 @@ function switchTab(name){
   if(name==='teams') renderTeamsGrid();
   if(name==='clubs') renderClubSquad();
   if(name==='stats') renderStats();
+  if(name==='beker') renderBeker();
 }
 document.getElementById('mainnav').addEventListener('click', (e)=>{
   if(e.target.dataset.tab) switchTab(e.target.dataset.tab);
@@ -229,6 +230,7 @@ function init(){
   initClubsTab();
   initSpelersTab();
   initRegelsTab();
+  initBekerTab();
   initDataTab();
   initLoginForm();
   initAuthGate();

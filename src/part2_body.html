@@ -29,6 +29,7 @@
     <button data-tab="clubs">Voetbalploegen</button>
     <button data-tab="teams">Teams</button>
     <button data-tab="stats">Statistieken</button>
+    <button data-tab="beker">Beker</button>
     <button data-tab="regels">Spelregels</button>
     <button data-tab="ronde">Speelronde</button>
     <button data-tab="data" id="navDataBtn" style="display:none;">Data</button>
@@ -108,6 +109,17 @@
     <div class="note">Deze overzichten worden automatisch berekend uit alle spelersstatistieken die tot nu toe bij Speelronde zijn ingevuld &mdash; over alle clubs en speelrondes heen, los van welk team (van jou of Frank) een speler op enig moment had. Nog niets ingevuld bij Speelronde? Dan blijven de lijsten hieronder leeg.</div>
   </div>
   <div id="statsContainer"></div>
+</section>
+
+<section id="tab-beker" class="tabcontent" style="display:none;">
+  <div class="panel">
+    <h2 style="margin:0;">Beker</h2>
+    <div class="note">Fictief bekertoernooi tussen de teams van jou en Frank, in knock-outvorm. Bekerwedstrijden vallen elke 5 speelrondes (start speelronde 5, dus daarna 10, 15, 20, 25, 30 en eventueel 34) en worden automatisch beslist door de rondescore van beide teams in die speelronde &mdash; dezelfde berekening als de kolom "ronde" bij Tussenstand. Bij gelijkspel wint het team met het laagste totale spelersbudget. Trek de loting pas als alle teams voor dit seizoen zijn aangemaakt bij Teams: het aantal teams op dat moment bepaalt de bracket-grootte en dus het aantal byes, en de finale valt in speelronde 30 (bij 64 teams of minder) of speelronde 34 (bij meer dan 64 teams).</div>
+    <div class="row">
+      <button class="btn primary" id="btnBekerLoting">🎲 Loting trekken</button>
+    </div>
+  </div>
+  <div id="bekerContainer"></div>
 </section>
 
 <section id="tab-regels" class="tabcontent" style="display:none;">
