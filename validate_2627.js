@@ -383,6 +383,14 @@ async function main(){
   })()`);
   console.log('56) de loting verdeelt byes altijd over verschillende koppels (nooit twee bye-plekken tegen elkaar):', geenDubbeleByeCheck);
 
+  console.log('57) knop "Loting wissen" staat naast "Loting trekken":', /id="btnBekerLoting">[^<]*<\/button>\s*<button class="btn" id="btnBekerWissen">/.test(html));
+  const wisCheck = get(sb, `(function(){
+    STATE.beker = {drawn:true, slots:['beker_t1','beker_t2'], rondeNummers:[5], getrokkenOp:'test', aantalTeamsBijLoting:2};
+    wisBekerLoting(); // confirm() is in deze testsandbox al gemockt naar true
+    return STATE.beker === null;
+  })()`);
+  console.log('58) wisBekerLoting() maakt STATE.beker weer leeg:', wisCheck);
+
   console.log('ALLES OK');
 }
 main().catch(e=>{ console.error('TESTFOUT', e); process.exit(1); });
