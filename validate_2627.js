@@ -483,7 +483,11 @@ async function main(){
   // seizoenTotaal (live), en de introtekst boven de tabbladen is verwijderd (niet nuttig).
   console.log('77) introNote staat niet meer in de pagina:', !/id="introNote"/.test(html));
   run(sb, "renderTeamsGrid();");
-  const teamsGridHtml = get(sb, "document.getElementById('teamsGrid').innerHTML");
+  // renderTeamsGrid() bouwt de kaarten via appendChild() (net als in een echte browser); de
+  // fake-DOM van deze testharness houdt appendChild-kinderen apart in .children bij (in
+  // tegenstelling tot een echte browser telt dit niet automatisch op bij .innerHTML), dus we
+  // lezen de kaartinhoud via .children terug in plaats van via .innerHTML van de grid zelf.
+  const teamsGridHtml = get(sb, "document.getElementById('teamsGrid').children.map(c=>c.innerHTML).join('')");
   console.log('78) Teams-overzicht toont geen "nieuw"-vlaggetje meer en gebruikt echte rangnummers:', !teamsGridHtml.includes('flag">nieuw') && /#1/.test(teamsGridHtml));
   run(sb, `selectedTeamKey = Object.keys(STATE.teams)[0]; renderTeamDetail();`);
   const teamDetailHtml = get(sb, "document.getElementById('teamDetail').innerHTML");
