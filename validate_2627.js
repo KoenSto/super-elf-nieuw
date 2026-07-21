@@ -193,6 +193,19 @@ async function main(){
   })()`);
   console.log('37) syncUitslag schrijft de berekende score terug op de wedstrijd:', syncCheck);
 
+  const penCheck = get(sb, `(function(){
+    const m = {
+      clubThuis:'A', clubUit:'B',
+      spelersThuis:[{naam:'X1',positie:'A',goal:1,pen_scoren:1,pen_missen:1,pen_stoppen:0,eigen_doelpunt:0}],
+      spelersUit:[{naam:'Y1',positie:'A',goal:0,pen_scoren:0,pen_missen:0,pen_stoppen:1,eigen_doelpunt:0}]
+    };
+    const u = berekenUitslagVanWedstrijd(m);
+    // Thuis: 1 gewone goal + 1 gescoorde penalty = 2 (de gemiste penalty telt niet mee).
+    // Uit: 0 (de gestopte penalty van de keeper levert geen doelpunt op, en er is geen eigen doelpunt).
+    return u.thuis===2 && u.uit===0;
+  })()`);
+  console.log('38) gescoorde penalty telt mee als doelpunt; gemiste/gestopte penalty niet:', penCheck);
+
   console.log('ALLES OK');
 }
 main().catch(e=>{ console.error('TESTFOUT', e); process.exit(1); });
