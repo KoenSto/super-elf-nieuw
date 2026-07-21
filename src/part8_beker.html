@@ -198,7 +198,19 @@ function renderBeker(){
   el.innerHTML = infoHTML + kampioenHTML + rondesHTML;
 }
 
+function wisBekerLoting(){
+  if(!STATE.beker || !STATE.beker.drawn){
+    alert('Er is nog geen loting om te wissen.');
+    return;
+  }
+  if(!confirm('Weet je zeker dat je de bekerloting wilt wissen? Dit verwijdert het hele schema en alle bekeruitslagen die daaruit volgen — je kunt daarna opnieuw loten.')) return;
+  STATE.beker = null;
+  saveState();
+  renderBeker();
+}
+
 function initBekerTab(){
   document.getElementById('btnBekerLoting').addEventListener('click', trekBekerLoting);
+  document.getElementById('btnBekerWissen').addEventListener('click', wisBekerLoting);
 }
 </script>
