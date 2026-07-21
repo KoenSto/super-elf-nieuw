@@ -46,6 +46,11 @@ function syncUitslag(m){
   const u = berekenUitslagVanWedstrijd(m);
   m.uitslagThuis = u.thuis;
   m.uitslagUit = u.uit;
+  // "Schoon" (clean sheet) is een resultante van de teamscore: als de tegenstander niet scoort,
+  // krijgt iedere speler van het eigen team automatisch een clean sheet toegekend (de puntentabel
+  // bepaalt zelf hoeveel dat per positie waard is — voor aanvallers vaak 0). Niet meer los invulbaar.
+  m.spelersThuis.forEach(sp=>{ sp.geen_tegengoals = u.uit===0 ? 1 : 0; });
+  m.spelersUit.forEach(sp=>{ sp.geen_tegengoals = u.thuis===0 ? 1 : 0; });
 }
 function fmtGeld(n){ return '€' + Number(n||0).toLocaleString('nl-NL'); }
 function esc(s){ return (s==null?'':String(s)).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }

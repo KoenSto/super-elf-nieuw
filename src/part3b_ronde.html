@@ -59,9 +59,14 @@ function playerSelectOptionsHTML(club, geselecteerdNaam){
 function statRowHTML(ronde, mi, side, pi, sp, resultaat, club){
   const punten = berekenPunten(sp.positie, resultaat, sp);
   const puntenClass = punten>0?'pos':(punten<0?'neg':'');
-  let statInputs = STAT_KEYS.map(k=>
-    `<input type="number" data-r="${ronde}" data-m="${mi}" data-side="${side}" data-p="${pi}" data-field="${k}" value="${sp[k]||0}">`
-  ).join('');
+  let statInputs = STAT_KEYS.map(k=>{
+    if(k==='geen_tegengoals'){
+      // Clean sheet wordt niet meer los ingevuld: die volgt automatisch uit de (ook al automatische)
+      // teamscore van deze wedstrijd — zie syncUitslag(). Hier alleen tonen, niet bewerkbaar.
+      return `<span class="stat-auto ${sp[k]?'clean':''}" title="Automatisch: 1 als het team van deze speler in deze wedstrijd geen tegengoal kreeg.">${sp[k]?1:0}</span>`;
+    }
+    return `<input type="number" data-r="${ronde}" data-m="${mi}" data-side="${side}" data-p="${pi}" data-field="${k}" value="${sp[k]||0}">`;
+  }).join('');
   const naamStijl = sp.naam ? `background-color:var(--pos${sp.positie}-bg);color:var(--pos${sp.positie}-text);font-weight:600;` : '';
   return `<div class="player-row" style="border-left-color:${posLineColor(sp.positie)};">
     <span class="muted small">${pi+1}</span>
@@ -160,6 +165,7 @@ document.addEventListener('click', (e)=>{
     const m = rd.matches[t.dataset.addM];
     const arr = t.dataset.addSide==='thuis' ? m.spelersThuis : m.spelersUit;
     arr.push({naam:'', positie:'V', rol:'basis', goal:0,pen_scoren:0,pen_missen:0,pen_stoppen:0,eigen_doelpunt:0,assist:0,geen_tegengoals:0,geel:0,geel2:0,rood:0});
+    syncUitslag(m); // nieuwe speler krijgt direct de juiste clean-sheet stand van deze wedstrijd
     saveState(); renderRonde();
   }
   if(t.dataset.removeR!==undefined){
