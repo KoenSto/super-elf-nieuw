@@ -14,7 +14,47 @@ function initStandTab(){
   }
   sel.value = standRonde;
   sel.addEventListener('change', ()=>{ standRonde = Number(sel.value); renderStand(); });
+  document.getElementById('btnPrintRonde').addEventListener('click', printRondeUitslag);
   renderStand();
+}
+// Bouwt een losse, printvriendelijke ranglijst van alle teams op basis van hun live score in de
+// gekozen speelronde (dezelfde berekening als de kolom "ronde live" hierboven), met de winnaar(s)
+// van die ronde gemarkeerd, en start direct het browser-printvenster (ook te gebruiken als PDF).
+function printRondeUitslag(){
+  const ronde = standRonde;
+  buildTeamList();
+  const rijen = TEAM_LIST.map(team=>{
+    const live = liveTotaalRonde(team, ronde);
+    return {team, score: live.total, gevonden: live.gevonden};
+  }).sort((a,b)=> b.score - a.score);
+  const maxScore = rijen.length ? rijen[0].score : null;
+  const winnaars = rijen.filter(r=> maxScore!==null && r.score===maxScore).map(r=>r.team.teamnaam);
+  const winnaarTekst = winnaars.length>1
+    ? `Gedeelde winst deze ronde voor: ${winnaars.map(esc).join(', ')}`
+    : (winnaars.length===1 ? `Winnaar speelronde ${ronde}: ${esc(winnaars[0])}` : 'Nog geen scores voor deze ronde.');
+  const rijenHtml = rijen.map((r,i)=>{
+    const isWinnaar = maxScore!==null && r.score===maxScore;
+    return `<tr style="${isWinnaar?'font-weight:700;':''}border-bottom:1px solid #ddd;">
+      <td style="padding:6px 8px;">${i+1}</td>
+      <td style="padding:6px 8px;">${isWinnaar?'🏆 ':''}${esc(r.team.teamnaam)}</td>
+      <td style="padding:6px 8px;color:#666;">${esc(r.team.speler)}</td>
+      <td style="padding:6px 8px;text-align:right;">${r.score}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="4" style="padding:10px;">Nog geen teams aangemaakt.</td></tr>';
+  const datumTekst = new Date().toLocaleDateString('nl-NL', {day:'numeric', month:'long', year:'numeric'});
+  document.getElementById('printRondeUitslag').innerHTML = `
+    <div style="font-family:'DM Sans',Arial,sans-serif;padding:30px;color:#222;">
+      <h1 style="margin:0 0 4px;font-size:22px;">⚽ Super Elf — Speelronde ${ronde}</h1>
+      <div style="color:#666;font-size:12px;margin-bottom:16px;">Gegenereerd op ${datumTekst}</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:20px;">${winnaarTekst}</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead><tr style="border-bottom:2px solid #333;text-align:left;">
+          <th style="padding:6px 8px;">#</th><th style="padding:6px 8px;">Team</th><th style="padding:6px 8px;">Speler</th><th style="padding:6px 8px;text-align:right;">Score ronde ${ronde}</th>
+        </tr></thead>
+        <tbody>${rijenHtml}</tbody>
+      </table>
+    </div>`;
+  window.print();
 }
 const STAND_COLUMNS = [
   {key:'rank', label:'#', sortable:false},
@@ -155,11 +195,6 @@ function initRegelsTab(){
 
 /* ============ TAB: Data ============ */
 function initDataTab(){
-  updateFileConnStatus();
-  document.getElementById('btnConnectFile').addEventListener('click', async ()=>{
-    const ok = await connectFile();
-    if(ok) flashDataStatus('Bestand gekoppeld — automatisch opslaan actief.');
-  });
   document.getElementById('btnExport').addEventListener('click', ()=>{
     const blob = new Blob([JSON.stringify(STATE,null,1)], {type:'application/json'});
     const a = document.createElement('a');
@@ -209,7 +244,6 @@ document.getElementById('mainnav').addEventListener('click', (e)=>{
   if(e.target.dataset.tab) switchTab(e.target.dataset.tab);
 });
 
-function flashDataStatus(msg){ console.log(msg); }
 function initLoginForm(){
   const form = document.getElementById('loginForm');
   form.addEventListener('submit', async (e)=>{
@@ -224,8 +258,6 @@ function initLoginForm(){
 function init(){
   STATE = loadState();
   buildTeamList();
-  document.getElementById('fileConnStatus').addEventListener('click', async ()=>{ await connectFile(); });
-  proberenAutomatischTeHerkoppelen();
   initRondeTab();
   initTeamsTab();
   initStandTab();

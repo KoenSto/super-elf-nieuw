@@ -115,7 +115,6 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:20px;}
   header{padding:10px 12px;gap:8px;}
   header h1{font-size:15px;}
   header .sub{font-size:10px;}
-  #fileConnStatus{font-size:12px;padding:8px 12px;margin-left:0 !important;order:2;}
   nav{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;order:3;justify-content:flex-start;}
   nav button{flex:0 0 auto;padding:8px 12px;font-size:12px;}
   main{padding:10px;}
@@ -139,5 +138,12 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:20px;}
 .login-card input{width:100%;padding:9px 10px;border:1px solid var(--border);border-radius:6px;font-size:14px;box-sizing:border-box;}
 .login-card button{width:100%;margin-top:18px;padding:10px;}
 #loginError{display:block;margin-top:10px;color:var(--danger);font-size:12.5px;min-height:16px;}
+#printRondeUitslag{display:none;}
+/* Print alleen de gegenereerde ronde-uitslag (#printRondeUitslag), niet de rest van de app. */
+@media print{
+  body *{visibility:hidden !important;}
+  #printRondeUitslag, #printRondeUitslag *{visibility:visible !important;}
+  #printRondeUitslag{display:block !important;position:absolute;left:0;top:0;width:100%;}
+}
 </style>
 </head>

@@ -19,7 +19,6 @@
     <h1>⚽ Super Elf Dashboard</h1>
     <div class="sub">Seizoen 2026-2027</div>
   </div>
-  <button id="fileConnStatus" class="btn primary" style="margin-left:14px;font-size:14px;padding:9px 16px;" title="Klik om dit bestand te koppelen zodat elke wijziging er automatisch in wordt opgeslagen">📁 Bestand koppelen voor automatisch opslaan</button>
   <span id="fbHeaderStatus" class="small muted" style="margin-left:8px;"></span>
   <span id="loginUserBadge" class="small muted" style="margin-left:8px;"></span>
   <span id="kijkerBanner" class="small" style="margin-left:8px;display:none;color:var(--warn);font-weight:700;" title="Dit account kan alles bekijken, maar niets wijzigen.">👀 kijker (alleen-lezen)</span>
@@ -49,6 +48,7 @@
       <div class="row">
         <label class="small muted">Ronde:</label>
         <select id="standRondeSelect"></select>
+        <button class="btn" id="btnPrintRonde" title="Print een overzicht van de uitslag van deze speelronde">🖨️ Print ronde-uitslag</button>
       </div>
     </div>
     <div class="note">De kolom <b>ronde (live)</b> berekent voor de gekozen ronde wat de <b>huidige selectie</b> van een team zou scoren met de wedstrijdgegevens van die ronde. De kolommen <b>P1 t/m P4</b> zijn de vier periodes en tellen automatisch de live rondescores op binnen de bijbehorende speelrondes (P1: ronde 1-9, P2: ronde 10-17, P3: ronde 18-26, P4: ronde 27-34 &mdash; beweeg over een kolomkop voor de exacte rondes). <b>Totaal</b> is de som over het hele seizoen. Klik op een kolomkop om te sorteren.</div>
@@ -150,14 +150,6 @@
 
 <section id="tab-data" class="tabcontent" style="display:none;">
   <div class="panel">
-    <h2>Automatisch opslaan naar dit bestand</h2>
-    <p class="small">Koppel dit HTML-bestand één keer per sessie. Daarna wordt elke wijziging automatisch in het bestand zelf weggeschreven &mdash; stuur je het bestand daarna door, dan zit al jouw data er direct in (geen export/import meer nodig). Dit werkt alleen in <b>Chrome of Edge</b> (niet in Firefox/Safari) en moet na het heropenen van het bestand opnieuw gekoppeld worden &mdash; dat is een beveiligingsbeperking van de browser, geen bug.</p>
-    <div class="row">
-      <button class="btn primary" id="btnConnectFile">📁 Bestand koppelen voor automatisch opslaan</button>
-      <span id="fileConnStatusLong" class="small muted">Nog niet gekoppeld &mdash; wijzigingen worden nu alleen lokaal (browseropslag) bewaard.</span>
-    </div>
-  </div>
-  <div class="panel">
     <h2>Gedeelde opslag (cloud)</h2>
     <p class="small">Deze website deelt automatisch wijzigingen tussen ingelogde deelnemers via een beveiligde database &mdash; alleen wie inlogt kan de gegevens zien of wijzigen. Er is geen configuratie nodig.</p>
     <div class="row" style="margin-top:8px;flex-wrap:wrap;">
@@ -180,3 +172,4 @@
 </main>
 <footer>Super Elf Dashboard &middot; seizoen 2026-2027</footer>
 </div>
+<div id="printRondeUitslag"></div>

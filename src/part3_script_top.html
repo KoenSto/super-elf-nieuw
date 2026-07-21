@@ -140,10 +140,6 @@ function migreerState(state){
   return state;
 }
 
-let fileHandle = null;
-let pendingFileHandle = null;
-let fileWriteTimer = null;
-
 function readEmbeddedState(){
   try{
     const el = document.getElementById('embeddedStateJSON');
@@ -180,126 +176,7 @@ function loadState(){
 function saveState(){
   STATE.savedAt = Date.now();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE));
-  scheduleFileWrite();
   pushToFirebase();
-}
-function scheduleFileWrite(){
-  if(!fileHandle) return;
-  if(fileWriteTimer) clearTimeout(fileWriteTimer);
-  fileWriteTimer = setTimeout(writeToConnectedFile, 600);
-}
-function updateFileConnStatus(){
-  const short = document.getElementById('fileConnStatus');
-  const long = document.getElementById('fileConnStatusLong');
-  if(fileHandle){
-    if(short){ short.textContent = '📁 Gekoppeld ✓ (' + (fileHandle.name||'bestand') + ')'; short.classList.add('primary'); }
-    if(long) long.textContent = 'Gekoppeld aan "' + (fileHandle.name||'bestand') + '" — wijzigingen worden automatisch in dit bestand opgeslagen.';
-  } else if(pendingFileHandle){
-    if(short){ short.textContent = '📁 Bevestig koppeling (1 klik)'; short.classList.add('primary'); }
-    if(long) long.textContent = 'Dit bestand was al eens gekoppeld — klik op de knop om dat met één klik te bevestigen (geen nieuwe bestandskiezer nodig).';
-  } else {
-    if(short){ short.textContent = '📁 Bestand koppelen'; short.classList.remove('primary'); }
-    if(long) long.textContent = 'Nog niet gekoppeld — wijzigingen worden nu alleen lokaal (browseropslag) bewaard.';
-  }
-}
-/* Onthoud de bestandskoppeling tussen sessies via IndexedDB, zodat je na het heropenen
-   van dit bestand niet steeds opnieuw een bestandskiezer hoeft te doorlopen. Chrome/Edge
-   kunnen de toestemming voor eenzelfde bestand onthouden; is dat niet (meer) het geval,
-   dan volstaat één klik op de knop bovenaan (in plaats van opnieuw het bestand te zoeken). */
-function idbOpen(){
-  return new Promise((resolve, reject)=>{
-    const req = indexedDB.open('superElfDashboard2627DB', 1);
-    req.onupgradeneeded = ()=>{ req.result.createObjectStore('handles'); };
-    req.onsuccess = ()=>resolve(req.result);
-    req.onerror = ()=>reject(req.error);
-  });
-}
-async function idbSetHandle(handle){
-  try{
-    const db = await idbOpen();
-    await new Promise((resolve,reject)=>{
-      const tx = db.transaction('handles','readwrite');
-      tx.objectStore('handles').put(handle, 'fileHandle');
-      tx.oncomplete = resolve; tx.onerror = ()=>reject(tx.error);
-    });
-  }catch(e){ console.warn('kon bestandskoppeling niet onthouden', e); }
-}
-async function idbGetHandle(){
-  try{
-    const db = await idbOpen();
-    return await new Promise((resolve,reject)=>{
-      const tx = db.transaction('handles','readonly');
-      const req = tx.objectStore('handles').get('fileHandle');
-      req.onsuccess = ()=>resolve(req.result||null);
-      req.onerror = ()=>reject(req.error);
-    });
-  }catch(e){ return null; }
-}
-// Bij het laden van de pagina: kijk of er een eerder gekoppeld bestand bekend is, en of de
-// browser de schrijftoestemming daarvoor nog herkent zonder nieuwe bestandskiezer.
-async function proberenAutomatischTeHerkoppelen(){
-  if(!window.showOpenFilePicker) return;
-  const handle = await idbGetHandle();
-  if(!handle) return;
-  try{
-    const perm = await handle.queryPermission({mode:'readwrite'});
-    if(perm === 'granted'){
-      fileHandle = handle;
-      updateFileConnStatus();
-    } else {
-      // Toestemming is niet (meer) actief te herstellen zonder gebruikersactie; onthoud de
-      // handle wel zodat de koppelknop 'm eerst probeert te hergebruiken i.p.v. direct een
-      // nieuwe bestandskiezer te openen.
-      pendingFileHandle = handle;
-      updateFileConnStatus();
-    }
-  }catch(e){ /* handle niet meer geldig (bestand verplaatst/verwijderd) */ }
-}
-async function connectFile(){
-  if(!window.showOpenFilePicker){
-    alert('Automatisch opslaan naar dit bestand wordt niet ondersteund in deze browser. Gebruik Chrome of Edge, of gebruik de handmatige export/import onder Data.');
-    return false;
-  }
-  try{
-    if(pendingFileHandle){
-      const perm = await pendingFileHandle.requestPermission({mode:'readwrite'});
-      if(perm === 'granted'){
-        fileHandle = pendingFileHandle;
-        pendingFileHandle = null;
-        updateFileConnStatus();
-        await writeToConnectedFile();
-        return true;
-      }
-    }
-    const [handle] = await window.showOpenFilePicker({
-      types: [{description:'Super Elf Dashboard', accept:{'text/html':['.html','.htm']}}]
-    });
-    fileHandle = handle;
-    pendingFileHandle = null;
-    updateFileConnStatus();
-    await writeToConnectedFile();
-    await idbSetHandle(handle);
-    return true;
-  }catch(e){
-    if(e.name !== 'AbortError') console.warn('kon bestand niet koppelen', e);
-    return false;
-  }
-}
-async function writeToConnectedFile(){
-  if(!fileHandle) return;
-  try{
-    const stateScript = document.getElementById('embeddedStateJSON');
-    if(stateScript) stateScript.textContent = JSON.stringify(STATE).replace(/</g, '\u003c');
-    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-    const writable = await fileHandle.createWritable();
-    await writable.write(html);
-    await writable.close();
-    updateFileConnStatus();
-  }catch(e){
-    console.warn('kon niet automatisch opslaan naar bestand', e);
-    const long = document.getElementById('fileConnStatusLong');
-    if(long) long.textContent = 'Opslaan naar bestand mislukt: ' + (e.message||e);
-  }
 }
 function ensureRonde(nr){
   if(!STATE.rounds[nr]) STATE.rounds[nr] = {matches:[]};
