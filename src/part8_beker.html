@@ -42,6 +42,24 @@ function bepaalBekerRondeNummers(aantalTeams){
   return {bracketSize, rondeNummers};
 }
 
+// Verdeelt de byes bewust over verschillende koppels van de eerste bekerronde, zodat er nooit twee
+// bye-plekken in dezelfde wedstrijd terechtkomen (dat zou een wedstrijd opleveren zonder team aan
+// beide kanten). Binnen die beperking is alles random: welke teams een bye krijgen én op welke
+// plek in het schema iedereen terechtkomt.
+function bouwBekerSlots(teamKeys, bracketSize){
+  const byes = bracketSize - teamKeys.length;
+  const numPairs = bracketSize / 2;
+  const shuffledTeams = shuffleArray(teamKeys);
+  const byePairIndices = new Set(shuffleArray([...Array(numPairs).keys()]).slice(0, byes));
+  const slots = new Array(bracketSize).fill(null);
+  let pointer = 0;
+  for(let p=0; p<numPairs; p++){
+    slots[2*p] = shuffledTeams[pointer++];
+    slots[2*p+1] = byePairIndices.has(p) ? null : shuffledTeams[pointer++];
+  }
+  return slots;
+}
+
 function trekBekerLoting(){
   buildTeamList();
   const teamKeys = TEAM_LIST.map(t=>t.key);
@@ -53,8 +71,7 @@ function trekBekerLoting(){
     if(!confirm('Er is al een loting getrokken. Opnieuw loten wist het huidige bekerschema en alle bekeruitslagen die daaruit volgen. Doorgaan?')) return;
   }
   const {bracketSize, rondeNummers} = bepaalBekerRondeNummers(teamKeys.length);
-  const byes = bracketSize - teamKeys.length;
-  const slots = shuffleArray([...teamKeys, ...Array(byes).fill(null)]);
+  const slots = bouwBekerSlots(teamKeys, bracketSize);
   STATE.beker = {drawn:true, slots, rondeNummers, getrokkenOp: new Date().toISOString(), aantalTeamsBijLoting: teamKeys.length};
   saveState();
   renderBeker();
@@ -66,8 +83,10 @@ function haalBekerTeamOp(key){
 }
 
 function bekerTeamLabel(key){
+  if(key==='TBD') return '<span class="muted">nog niet bekend</span>';
+  if(!key) return '<span class="muted">— bye —</span>';
   const t = haalBekerTeamOp(key);
-  if(!t) return key ? '(verwijderd team)' : '— bye —';
+  if(!t) return '(verwijderd team)';
   return `${esc(t.teamnaam)} <span class="muted small">(${esc(t.speler)})</span>`;
 }
 
@@ -95,6 +114,10 @@ function bekerWedstrijdUitslag(teamAKey, teamBKey, ronde){
 
 // Rekent het volledige schema live door: de loting (STATE.beker.slots) ligt vast, maar wie er
 // per bekerronde doorgaat wordt elke keer opnieuw bepaald aan de hand van de actuele Speelronde-data.
+// Belangrijk onderscheid: een echte "bye" (null, alleen mogelijk in de allereerste ronde, rechtstreeks
+// uit de loting) is niet hetzelfde als "nog niet bekend" (de tekst 'TBD', wanneer een eerdere
+// bekerwedstrijd nog niet gespeeld of nog onbeslist is) — anders zou een team ten onrechte
+// automatisch kunnen doorstromen (of zelfs kampioen worden) terwijl de vorige ronde nog loopt.
 function berekenBekerSchema(){
   buildTeamList();
   const {slots, rondeNummers} = STATE.beker;
@@ -106,14 +129,19 @@ function berekenBekerSchema(){
     const volgende = [];
     for(let j=0;j<huidige.length;j+=2){
       const a = huidige[j], b = huidige[j+1];
+      if(a==='TBD' || b==='TBD'){
+        wedstrijden.push({teamA:a, teamB:b, ronde, winnaarKey:null, status:'wacht_op_vorige_ronde'});
+        volgende.push('TBD');
+        continue;
+      }
       const res = bekerWedstrijdUitslag(a, b, ronde);
       wedstrijden.push({teamA:a, teamB:b, ronde, ...res});
-      volgende.push(res.winnaarKey);
+      volgende.push(res.winnaarKey===null ? 'TBD' : res.winnaarKey);
     }
     rondes.push({ronde, teamsInDezeRonde, wedstrijden});
     huidige = volgende;
   });
-  const kampioenKey = (huidige.length===1) ? huidige[0] : null;
+  const kampioenKey = (huidige.length===1 && huidige[0]!=='TBD') ? huidige[0] : null;
   return {rondes, kampioenKey};
 }
 
@@ -128,6 +156,7 @@ function bekerStatusTekst(w){
   if(w.status==='bye') return 'bye — gaat automatisch door';
   if(w.status==='leeg') return '';
   if(w.status==='onbekend') return 'team niet meer gevonden';
+  if(w.status==='wacht_op_vorige_ronde') return 'wacht nog op de uitslag van de vorige bekerronde';
   if(w.status==='nog_spelen') return `nog te spelen (speelronde ${w.ronde} is nog niet ingevuld)`;
   if(w.status==='gespeeld') return `${w.scoreA} - ${w.scoreB}`;
   if(w.status==='gelijk_tiebreak') return `${w.scoreA} - ${w.scoreB} (gelijk — ${bekerTeamLabelPlain(w.winnaarKey)} gaat door op laagste spelersbudget)`;
