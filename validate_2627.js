@@ -493,6 +493,95 @@ async function main(){
   const teamDetailHtml = get(sb, "document.getElementById('teamDetail').innerHTML");
   console.log('79) Teamdetail toont "Seizoenstotaal:" (niet meer "(origineel)") en geen dode origineel-tekst meer:', teamDetailHtml.includes('Seizoenstotaal:') && !teamDetailHtml.includes('Seizoenstotaal (origineel)') && !teamDetailHtml.includes('Het <b>origineel</b>'));
 
+  // ---- Teams-tab: dubbele club rood, budget-overschrijding rood, pastelkleuren dropdowns,
+  // wissel-speler in de basisopstelling (niet meer eronder), en puntentelling per actieve periode ----
+  run(sb, `
+    addTeam('TestSpeler', 'Team Wisseltest');
+    window.__wtKey = Object.keys(STATE.teams).find(k=>STATE.teams[k].teamnaam==='Team Wisseltest');
+    const clubX = DATA.clubs[0];
+    const spelersX = STATE.players.filter(p=>p.club===clubX);
+    window.__wtSpelerA = spelersX[0].naam;
+    window.__wtSpelerB = spelersX[1].naam;
+    addBasisSpeler(window.__wtKey, clubX, window.__wtSpelerA);
+    addBasisSpeler(window.__wtKey, clubX, window.__wtSpelerB); // zelfde club -> mag niet, moet rood worden
+    selectedTeamKey = window.__wtKey;
+    renderTeamDetail();
+  `);
+  const wtHtml80 = get(sb, "document.getElementById('teamDetail').innerHTML");
+  console.log('80) Twee actieve spelers van dezelfde club in de basisopstelling worden rood/foutief aangegeven:', wtHtml80.includes('row-error') && wtHtml80.includes('dubbele club'));
+
+  run(sb, `
+    const teamX = STATE.teams[window.__wtKey];
+    teamX.basis.forEach(b=>{ b.prijs = DATA.spelregels.budget; }); // 2x het volledige budget -> ruim over de cap
+    renderTeamDetail();
+  `);
+  const wtHtml81 = get(sb, "document.getElementById('teamDetail').innerHTML");
+  console.log('81) Overschrijding van het budget basis-11 wordt rood gearceerd:', wtHtml81.includes('pill-danger') && wtHtml81.includes('over budget'));
+  console.log('82) Speler-dropdowns (basis toevoegen) tonen weer de pastelkleur per positie:', /data-newbasis-speler="[^"]*"\s+style="background-color:var\(--pos/.test(wtHtml81) && /<option value="[^"]*" style="background-color:var\(--pos/.test(wtHtml81));
+  console.log('83) Sectie "Reservebank \\/ wissels" bestaat niet meer (samengevoegd in Basisopstelling, met een losse "Wissel doorvoeren"-sectie):', !wtHtml81.includes('Reservebank / wissels') && wtHtml81.includes('Wissel doorvoeren'));
+
+  // Puntenperiodes: speler A start in de basis, wordt in ronde 32 vervangen door speler B (uit
+  // dezelfde club — dat mag), en in ronde 33 wisselt speler A weer terug in voor speler B. Elke
+  // speler mag alleen meetellen binnen zijn eigen actieve periode, zonder puntenverlies of
+  // dubbeltelling, ook al komt speler A dus twee keer voor (twee losse, niet-overlappende periodes).
+  run(sb, `
+    addTeam('PeriodeSpeler', 'Team Periodetest');
+    window.__ptKey = Object.keys(STATE.teams).find(k=>STATE.teams[k].teamnaam==='Team Periodetest');
+    const clubY = DATA.clubs[1];
+    const spelersY = STATE.players.filter(p=>p.club===clubY);
+    window.__ptSpelerA = spelersY[0].naam;
+    window.__ptSpelerB = spelersY[1].naam;
+    addBasisSpeler(window.__ptKey, clubY, window.__ptSpelerA);
+
+    const rd31 = ensureRonde(31);
+    rd31.matches = [{
+      clubThuis: clubY, clubUit: 'PeriodeClubTegenstander31', uitslagThuis:1, uitslagUit:0,
+      spelersThuis:[{naam:window.__ptSpelerA, positie:'A', goal:1, pen_scoren:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0}],
+      spelersUit:[]
+    }];
+
+    const rd32 = ensureRonde(32);
+    rd32.matches = [{
+      clubThuis: clubY, clubUit: 'PeriodeClubTegenstander32', uitslagThuis:4, uitslagUit:0,
+      spelersThuis:[
+        {naam:window.__ptSpelerA, positie:'A', goal:3, pen_scoren:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0},
+        {naam:window.__ptSpelerB, positie:'A', goal:1, pen_scoren:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0}
+      ],
+      spelersUit:[]
+    }];
+    addWissel(window.__ptKey, clubY, window.__ptSpelerB, 32, window.__ptSpelerA, 'regulier');
+
+    const rd33 = ensureRonde(33);
+    rd33.matches = [{
+      clubThuis: clubY, clubUit: 'PeriodeClubTegenstander33', uitslagThuis:3, uitslagUit:0,
+      spelersThuis:[
+        {naam:window.__ptSpelerA, positie:'A', goal:2, pen_scoren:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0},
+        {naam:window.__ptSpelerB, positie:'A', goal:1, pen_scoren:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0}
+      ],
+      spelersUit:[]
+    }];
+    addWissel(window.__ptKey, clubY, window.__ptSpelerA, 33, window.__ptSpelerB, 'regulier');
+    buildTeamList();
+
+    window.__pt = {};
+    const teamObj = TEAM_LIST.find(t=>t.key===window.__ptKey);
+    window.__pt.puntenA32 = getSpelerPuntenInRonde(32, window.__ptSpelerA);
+    window.__pt.puntenB32 = getSpelerPuntenInRonde(32, window.__ptSpelerB);
+    window.__pt.puntenA31 = getSpelerPuntenInRonde(31, window.__ptSpelerA);
+    window.__pt.puntenA33 = getSpelerPuntenInRonde(33, window.__ptSpelerA);
+    window.__pt.puntenB33 = getSpelerPuntenInRonde(33, window.__ptSpelerB);
+    window.__pt.live31 = liveTotaalRonde(teamObj, 31).total;
+    window.__pt.live32 = liveTotaalRonde(teamObj, 32).total;
+    window.__pt.live33 = liveTotaalRonde(teamObj, 33).total;
+  `);
+  const pt = get(sb, "window.__pt");
+  console.log('84) Ronde 31 (vóór de wissel) telt gewoon de score van speler A mee:', pt.live31 === pt.puntenA31);
+  console.log('85) Ronde 32 (wisselronde): alleen de nieuwe speler B telt mee, speler A niet meer:', pt.live32 === pt.puntenB32 && pt.live32 !== pt.puntenA32);
+  console.log('86) Ronde 33 (speler A wisselt terug in voor B): weer alleen A telt mee, niet meer B:', pt.live33 === pt.puntenA33 && pt.live33 !== pt.puntenB33);
+  run(sb, "selectedTeamKey = window.__ptKey; renderTeamDetail();");
+  const ptDetailHtml = get(sb, "document.getElementById('teamDetail').innerHTML");
+  console.log('87) Wissel binnen dezelfde club is toegestaan zolang er maar 1 actief blijft (geen dubbele-club foutmelding):', !ptDetailHtml.includes('row-error') && !ptDetailHtml.includes('dubbele club'));
+
   console.log('ALLES OK');
 }
 main().catch(e=>{ console.error('TESTFOUT', e); process.exit(1); });
