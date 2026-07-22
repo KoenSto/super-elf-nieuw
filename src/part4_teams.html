@@ -229,8 +229,22 @@ function playerSelectStijl(club, selectedNaam){
 
 /* ============ TAB: Teams ============ */
 let selectedTeamKey = null;
+// Welke ronde er bekeken wordt in de puntenkolom van de Basisopstelling — los van STATE.huidigeRonde
+// (dat blijft de ronde waar een NIEUWE wissel standaard op ingaat), zodat je hier vrij door alle
+// speelrondes kunt bladeren zonder de rest van de app te beïnvloeden.
+let teamsRonde = 1;
 function initTeamsTab(){
   buildTeamList();
+  teamsRonde = STATE.huidigeRonde;
+  const rondeSel = document.getElementById('teamsRondeSelect');
+  rondeSel.innerHTML = '';
+  for(let i=1;i<=34;i++){
+    const o = document.createElement('option');
+    o.value = i; o.textContent = 'Ronde ' + i;
+    rondeSel.appendChild(o);
+  }
+  rondeSel.value = teamsRonde;
+  rondeSel.addEventListener('change', ()=>{ teamsRonde = Number(rondeSel.value); renderTeamDetail(); });
   document.getElementById('teamSearch').addEventListener('input', renderTeamsGrid);
   document.getElementById('btnAddTeam').addEventListener('click', ()=>{
     const speler = document.getElementById('newTeamSpeler').value;
@@ -277,7 +291,7 @@ function renderTeamDetail(){
   if(!team){ el.innerHTML=''; return; }
   const budget = computeBudget(team);
   const formatie = computeFormatie(team);
-  const ronde = STATE.huidigeRonde;
+  const ronde = teamsRonde; // bekeken ronde (via dropdown), los van STATE.huidigeRonde
   const live = liveTotaalRonde(team, ronde);
 
   const actieveSpelers = getActieveSpelers(team);
@@ -318,7 +332,9 @@ function renderTeamDetail(){
   const pbSpeler = pendingBasisSpeler[team.key] || (playersOfClub(pbClub)[0] && playersOfClub(pbClub)[0].naam) || '';
   const pwClub = pendingWisselClub[team.key] || DATA.clubs[0];
   const pwSpeler = pendingWisselSpeler[team.key] || (playersOfClub(pwClub)[0] && playersOfClub(pwClub)[0].naam) || '';
-  const pwRonde = pendingWisselRonde[team.key] || ronde;
+  // Een NIEUWE wissel gaat standaard in vanaf de huidige speelronde (STATE.huidigeRonde), niet vanaf
+  // de ronde die je hier toevallig aan het bekijken bent via de rondekeuze hierboven.
+  const pwRonde = pendingWisselRonde[team.key] || STATE.huidigeRonde;
   const pwUit = pendingWisselUit[team.key] || (actieveSpelers[0] && actieveSpelers[0].naam) || '';
   const pwType = pendingWisselType[team.key] || 'regulier';
   const uitOptionsHTML = actieveSpelers.map(b=>`<option value="${esc(b.naam)}" ${b.naam===pwUit?'selected':''}>${esc(b.naam)} (${b.positie}, ${esc(b.club)})</option>`).join('');
