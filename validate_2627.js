@@ -582,6 +582,15 @@ async function main(){
   const ptDetailHtml = get(sb, "document.getElementById('teamDetail').innerHTML");
   console.log('87) Wissel binnen dezelfde club is toegestaan zolang er maar 1 actief blijft (geen dubbele-club foutmelding):', !ptDetailHtml.includes('row-error') && !ptDetailHtml.includes('dubbele club'));
 
+  // Teams-tab: los van STATE.huidigeRonde moet je via een dropdown (#teamsRondeSelect) elke ronde
+  // kunnen bekijken in de Basisopstelling-tabel, zonder de rest van de app (o.a. de standaardronde
+  // voor een NIEUWE wissel) te beïnvloeden.
+  console.log('88) #teamsRondeSelect bestaat en heeft 34 rondes als optie:', get(sb, "document.getElementById('teamsRondeSelect').children.length")===34);
+  run(sb, "STATE.huidigeRonde = 5; teamsRonde = 33; renderTeamDetail();");
+  const ptDetailRonde33 = get(sb, "document.getElementById('teamDetail').innerHTML");
+  console.log('89) Kiezen van een andere ronde in #teamsRondeSelect toont de punten van die ronde in de Basisopstelling:', ptDetailRonde33.includes('Ronde 33') && !ptDetailRonde33.includes('Ronde 5<'));
+  console.log('90) De ronde waarop een NIEUWE wissel default ingaat blijft STATE.huidigeRonde, ook al bekijk je via de dropdown een andere ronde:', /data-newwissel-ronde="[^"]*"[^>]*value="5"/.test(ptDetailRonde33) || /value="5" data-newwissel-ronde/.test(ptDetailRonde33));
+
   console.log('ALLES OK');
 }
 main().catch(e=>{ console.error('TESTFOUT', e); process.exit(1); });
