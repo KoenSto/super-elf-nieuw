@@ -591,6 +591,54 @@ async function main(){
   console.log('89) Kiezen van een andere ronde in #teamsRondeSelect toont de punten van die ronde in de Basisopstelling:', ptDetailRonde33.includes('Ronde 33') && !ptDetailRonde33.includes('Ronde 5<'));
   console.log('90) De ronde waarop een NIEUWE wissel default ingaat blijft STATE.huidigeRonde, ook al bekijk je via de dropdown een andere ronde:', /data-newwissel-ronde="[^"]*"[^>]*value="5"/.test(ptDetailRonde33) || /value="5" data-newwissel-ronde/.test(ptDetailRonde33));
 
+  // Productiebug: een speler die al eerder (en inmiddels niet meer actief) op een team stond, kon via
+  // "+ speler toevoegen aan basis" opnieuw worden toegevoegd met vanaf_ronde:1 — dat overlapte met zijn
+  // eerdere periode en telde zijn punten dubbel. addBasisSpeler weigert dit voortaan, en
+  // repareerOverlappendePeriodes/normaliseState repareert al bestaande data met dit patroon.
+  run(sb, `
+    addTeam('Repareer', 'Team Repareertest');
+    window.__rtKey = Object.keys(STATE.teams).find(k=>STATE.teams[k].teamnaam==='Team Repareertest');
+    const clubZ = DATA.clubs[2];
+    const spelersZ = STATE.players.filter(p=>p.club===clubZ);
+    window.__rtSpeler = spelersZ[0].naam;
+    window.__rtClub = clubZ;
+    const teamZ = STATE.teams[window.__rtKey];
+    teamZ.basis.push({club:clubZ, naam:window.__rtSpeler, prijs:100, positie:spelersZ[0].positie, weken:{}, vanaf_ronde:1, laatste_ronde:2});
+  `);
+  console.log('91) addBasisSpeler weigert een speler "vers" toe te voegen die al eerder (en inmiddels niet meer actief) op dit team stond:', get(sb, `(function(){
+    const teamZ = STATE.teams[window.__rtKey];
+    const voorAantal = teamZ.basis.length;
+    addBasisSpeler(window.__rtKey, window.__rtClub, window.__rtSpeler);
+    return teamZ.basis.length === voorAantal;
+  })()`));
+
+  run(sb, `
+    addTeam('Repareer2', 'Team Repareertest2');
+    window.__rt2Key = Object.keys(STATE.teams).find(k=>STATE.teams[k].teamnaam==='Team Repareertest2');
+    const teamW = STATE.teams[window.__rt2Key];
+    // Exacte reproductie van de productiebug: dezelfde speler staat twee keer in team.basis — één keer
+    // als (correct) afgesloten oude periode (ronde 22 t/m 23), en één keer als actief record dat ten
+    // onrechte óók al vanaf ronde 22 begint (overlapt dus met de eerste periode i.p.v. bij ronde 24
+    // — net na het einde van de eerste periode — te beginnen).
+    const rd22 = ensureRonde(22);
+    rd22.matches = [{
+      clubThuis:'RepareerClubX', clubUit:'RepareerClubY', uitslagThuis:2, uitslagUit:0,
+      spelersThuis:[{naam:'RepareerSpeler', positie:'A', goal:2, pen_scoren:0, eigen_doelpunt:0, assist:0, geen_tegengoals:0, geel:0, geel2:0, rood:0}],
+      spelersUit:[]
+    }];
+    teamW.basis.push({club:'RepareerClubX', naam:'RepareerSpeler', prijs:100, positie:'A', weken:{}, vanaf_ronde:22, laatste_ronde:23});
+    teamW.basis.push({club:'RepareerClubX', naam:'RepareerSpeler', prijs:100, positie:'A', weken:{}, vanaf_ronde:22, laatste_ronde:null});
+    window.__rt2Punten = getSpelerPuntenInRonde(22, 'RepareerSpeler');
+    window.__rt2LiveVoor = liveTotaalRonde(teamW, 22).total;
+    STATE = normaliseState(STATE);
+    window.__rt2LiveNa = liveTotaalRonde(STATE.teams[window.__rt2Key], 22).total;
+    window.__rt2Periodes = STATE.teams[window.__rt2Key].basis.filter(b=>b.naam==='RepareerSpeler').map(b=>({vanaf:b.vanaf_ronde, tot:b.laatste_ronde}));
+  `);
+  const rt2 = get(sb, "({punten: window.__rt2Punten, voor: window.__rt2LiveVoor, na: window.__rt2LiveNa, periodes: window.__rt2Periodes})");
+  console.log('92) Vóór reparatie telde deze bekende productiebug (overlappende periodes) de score van ronde 22 dubbel:', rt2.punten!==null && rt2.voor === rt2.punten*2);
+  console.log('93) normaliseState() repareert dit meteen bij het laden: geen dubbeltelling meer:', rt2.na === rt2.punten);
+  console.log('94) Na reparatie start de tweede (voorheen overlappende) periode netjes ná het einde van de eerste periode (ronde 24), i.p.v. weer bij ronde 22:', rt2.periodes.some(p=>p.tot===23) && rt2.periodes.some(p=>p.tot===null && p.vanaf===24));
+
   console.log('ALLES OK');
 }
 main().catch(e=>{ console.error('TESTFOUT', e); process.exit(1); });
