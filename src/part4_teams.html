@@ -58,6 +58,16 @@ function getInactieveSpelers(team){
   const wisselsInactief = team.wissels.map((w,i)=>({...w, _bron:'wissel', _idx:i})).filter(p=>!isActieveSpeler(p));
   return basisInactief.concat(wisselsInactief);
 }
+// Wie er in een SPECIFIEKE speelronde daadwerkelijk stond opgesteld — dus niet noodzakelijk de
+// spelers die NU actief zijn, maar wie op dat moment (vanaf_ronde t/m laatste_ronde) meetelde. Zo
+// toont de basisopstelling voor ronde 1 bijv. weer de oorspronkelijke speler die later is vervangen,
+// en pas vanaf de ronde van de wissel de nieuwe speler — precies zoals het toen werkelijk stond.
+function getSpelersActiefInRonde(team, ronde){
+  const inWindow = p => ronde >= (p.vanaf_ronde||1) && ronde <= (p.laatste_ronde===null||p.laatste_ronde===undefined ? 34 : p.laatste_ronde);
+  const basisIn = team.basis.map((b,i)=>({...b, _bron:'basis', _idx:i})).filter(inWindow);
+  const wisselsIn = team.wissels.map((w,i)=>({...w, _bron:'wissel', _idx:i})).filter(inWindow);
+  return basisIn.concat(wisselsIn);
+}
 // Defensieve reparatie: als eenzelfde speler (naam) op een team meerdere basis-/wisselrecords heeft
 // met overlappende periodes — bijv. omdat hij ooit via "+ speler toevoegen aan basis" per ongeluk
 // opnieuw werd toegevoegd terwijl hij al eerder (en toen nog actief) op dit team stond — telden zijn
@@ -332,22 +342,27 @@ function renderTeamDetail(){
   const ronde = teamsRonde; // bekeken ronde (via dropdown), los van STATE.huidigeRonde
   const live = liveTotaalRonde(team, ronde);
 
-  const actieveSpelers = getActieveSpelers(team);
+  const actieveSpelers = getActieveSpelers(team); // NU actief — voor wisselen/toevoegen (los van de bekeken ronde)
+  const weergegevenSpelers = getSpelersActiefInRonde(team, ronde); // wie in de BEKEKEN ronde stond opgesteld
 
-  // Twee spelers van dezelfde club mogen niet samen actief in de opstelling staan. Bij een wissel mag
-  // een speler van diezelfde club er wel weer voor in de plaats komen (er staat dan nog steeds maar
-  // één van die club), maar zodra er per ongeluk toch twee actief staan, vallen die rijen op in rood.
+  // Twee spelers van dezelfde club mogen niet samen in de opstelling staan. Bij een wissel mag een
+  // speler van diezelfde club er wel weer voor in de plaats komen (er staat dan nog steeds maar één
+  // van die club), maar zodra er in de bekeken ronde per ongeluk toch twee stonden, vallen die rijen
+  // op in rood.
   const clubTelling = {};
-  actieveSpelers.forEach(p=>{ clubTelling[p.club] = (clubTelling[p.club]||0)+1; });
+  weergegevenSpelers.forEach(p=>{ clubTelling[p.club] = (clubTelling[p.club]||0)+1; });
   const dubbeleClubs = new Set(Object.entries(clubTelling).filter(([,n])=>n>1).map(([c])=>c));
 
   const posOrder = {K:0,V:1,M:2,A:3};
-  const actiefSorted = [...actieveSpelers].sort((a,b)=>posOrder[a.positie]-posOrder[b.positie] || a.naam.localeCompare(b.naam));
+  const weergegevenSorted = [...weergegevenSpelers].sort((a,b)=>posOrder[a.positie]-posOrder[b.positie] || a.naam.localeCompare(b.naam));
 
-  const basisRows = actiefSorted.map(b=>{
+  const basisRows = weergegevenSorted.map(b=>{
     const lp = getSpelerPuntenInRonde(ronde, b.naam);
     const foutRij = dubbeleClubs.has(b.club);
     const statusTekst = (b.vanaf_ronde && b.vanaf_ronde>1) ? `sinds ronde ${b.vanaf_ronde} (wissel)` : 'vanaf start';
+    // Verwijderen kan alleen voor een speler die NU nog echt actief is (een historische, al
+    // afgesloten periode van een eerdere ronde is hier alleen ter info te zien, niet te bewerken).
+    const magVerwijderen = canEdit() && isActieveSpeler(b);
     return `<tr${foutRij ? ' class="row-error" title="Twee spelers van dezelfde club mogen niet samen in de basisopstelling staan."' : ''}>
       <td style="border-left:4px solid ${posLineColor(b.positie)};"><span class="badge ${b.positie}">${b.positie}</span></td>
       <td>${esc(b.naam)}</td>
@@ -355,8 +370,8 @@ function renderTeamDetail(){
       <td class="muted">${fmtGeld(b.prijs)}</td>
       <td class="muted small">${statusTekst}</td>
       <td class="pts ${lp>0?'pos':(lp<0?'neg':'')}">${lp===null?'<span class="muted">–</span>':lp}</td>
-      <td>${canEdit() ? `<span class="close-btn" title="verwijder uit opstelling" data-remove-actief="${team.key}" data-remove-actief-bron="${b._bron}" data-remove-actief-idx="${b._idx}">✕</span>` : ''}</td></tr>`;
-  }).join('') || '<tr><td colspan="7" class="muted">Nog geen basisspelers. Voeg ze hieronder toe.</td></tr>';
+      <td>${magVerwijderen ? `<span class="close-btn" title="verwijder uit opstelling" data-remove-actief="${team.key}" data-remove-actief-bron="${b._bron}" data-remove-actief-idx="${b._idx}">✕</span>` : ''}</td></tr>`;
+  }).join('') || `<tr><td colspan="7" class="muted">Nog geen basisspelers in ronde ${ronde}. Voeg ze hieronder toe.</td></tr>`;
 
   const wisselLogRows = STATE.wisselLog.map((l,i)=>({l,i})).filter(x=>x.l.teamKey===team.key).sort((a,b)=>(b.l.ronde-a.l.ronde)).map(({l,i})=>{
     const typeInfo = l.type ? WISSEL_TYPES[l.type] : WISSEL_TYPES.regulier;
@@ -395,9 +410,10 @@ function renderTeamDetail(){
     </div>
     ${dubbeleClubs.size>0 ? `<div class="note">Deze opstelling heeft twee spelers van dezelfde club (<b>${[...dubbeleClubs].map(esc).join(', ')}</b>) tegelijk actief staan — hieronder in het rood aangegeven. Dat mag niet: haal er één van uit of wissel hem.</div>` : ''}
     <div class="note">
-      Ronde ${ronde}: met de <b>huidige selectie</b> toegepast op de wedstrijdgegevens van die ronde komt dit team op <b class="pts">${live.total}</b> punten (${live.gevonden}/${actieveSpelers.length} spelers gevonden).
+      Ronde ${ronde}: met de spelers die <b>in die ronde</b> daadwerkelijk opgesteld stonden, toegepast op de wedstrijdgegevens van die ronde, komt dit team op <b class="pts">${live.total}</b> punten (${live.gevonden}/${weergegevenSpelers.length} spelers gevonden).
     </div>
-    <h3>Basisopstelling</h3>
+    <h3>Basisopstelling (ronde ${ronde})</h3>
+    <div class="note small">Deze tabel toont wie er in ronde ${ronde} echt in de opstelling stond &mdash; kies hierboven een andere ronde om terug of vooruit te kijken. Wissel je iemand, dan verandert de opstelling vanaf de wisselronde; oudere rondes blijven het oorspronkelijke elftal laten zien.</div>
     <table><thead><tr><th>Pos</th><th>Speler</th><th>Club</th><th>Prijs</th><th>Status</th><th>Ronde ${ronde}</th><th></th></tr></thead><tbody>${basisRows}</tbody></table>
     ${canEdit() ? `<div class="row" style="margin-top:8px;">
       <select data-newbasis-club="${team.key}">${clubOptionsHTML(pbClub)}</select>
